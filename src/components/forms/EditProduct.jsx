@@ -26,7 +26,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
 
     }
 
-    fetch(`http://127.0.0.1:8000/product/${product_id}/`, {
+    fetch(`http://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
         console.error('Error:', error);
       });
     // console.log(formData)
-    fetch('http://127.0.0.1:8000/product/')
+    fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
     .then((r)=>r.json() )
     .then((data) => {
 
