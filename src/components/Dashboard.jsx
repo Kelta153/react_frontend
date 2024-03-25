@@ -46,7 +46,7 @@ export default function Dashboard() {
     const [products, setProducts] = React.useState([])
 
     React.useEffect(()=>{
-      fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
+      fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
       .then((r)=>r.json() )
       .then((data) => {
         console.log(data);
