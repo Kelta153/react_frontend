@@ -14,7 +14,7 @@ export default function DeleteConfirmationAlert({
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`http://127.0.0.1:8000/product/${product_id}`, {
+    fetch(`http://inventory-management-system-gary.azurewebsites.net/product/${product_id}`, {
       method: "DELETE",
     }).
     then(setDeleteSuccess("Success! Product has been removed"));
@@ -22,7 +22,7 @@ export default function DeleteConfirmationAlert({
       setDeleteSuccess(false)
     }, 2000) 
     
-      fetch('http://127.0.0.1:8000/product/')
+      fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
       .then((r)=>r.json() )
       .then((data) => {
         // console.log(data);
