@@ -16,8 +16,8 @@ export default function DeleteConfirmationAlert({
 
     fetch(`http://inventory-management-system-gary.azurewebsites.net/product/${product_id}`, {
       method: "DELETE",
-    }).
-    then(setDeleteSuccess("Success! Product has been removed"));
+    })
+    .then(setDeleteSuccess("Success! Product has been removed"));
     setTimeout(()=>{
       setDeleteSuccess(false)
     }, 2000) 

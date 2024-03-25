@@ -63,7 +63,7 @@ export default function Footer() {
         >
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
             <Box sx={{ ml: '0px' }}>
-              <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+              <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                 <img
                   src={logo}
                   style={logoStyle}

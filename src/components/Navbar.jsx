@@ -19,7 +19,6 @@ const logoStyle = {
 function Navbar({ handleOpen, handleLogout, loggedIn }) {
 
     const navBarMargin = loggedIn ? '240px' : '0px';
-    // const navBarPosition = loggedIn? 'fixed' : 'fixed';
 
     // Logic for scrolling using navigation links
     const scrollToSection = (sectionId) => {
@@ -64,7 +63,7 @@ function Navbar({ handleOpen, handleLogout, loggedIn }) {
                         >
 
                             {/* Logo/Brand */}
-                            <a href="#" style={{display:'flex', alignItems:'center', textDecoration:'none'}}>
+                            <a href="/" style={{display:'flex', alignItems:'center', textDecoration:'none'}}>
                             <img
                                 src={logo}
                                 style={logoStyle}
