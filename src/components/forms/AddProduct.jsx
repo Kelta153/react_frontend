@@ -28,7 +28,7 @@ export default function AddProduct({ setSuccess, handleClose, setProducts }) {
 
 
 
-    fetch('http://127.0.0.1:8000/product/', {
+    fetch('http://inventory-management-system-gary.azurewebsites.net/product/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default function AddProduct({ setSuccess, handleClose, setProducts }) {
       .catch(error => {
         console.error('Error:', error);
       });
-      fetch('http://127.0.0.1:8000/product/')
+      fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
       .then((r)=>r.json() )
       .then((data) => {
 
