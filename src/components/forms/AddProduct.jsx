@@ -21,7 +21,7 @@ export default function AddProduct({ setSuccess, handleClose, setProducts }) {
 
 
 
-    fetch('http://inventory-management-system-gary.azurewebsites.net/product/', {
+    fetch('https://inventory-management-system-gary.azurewebsites.net/product/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default function AddProduct({ setSuccess, handleClose, setProducts }) {
       .catch(error => {
         console.error('Error:', error);
       });
-      fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
+      fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
       .then((r)=>r.json() )
       .then((data) => {
 
