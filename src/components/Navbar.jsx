@@ -27,6 +27,7 @@ function Navbar({ handleOpen, handleLogout, loggedIn }) {
         if (sectionElement) {
           const targetScroll = sectionElement.offsetTop - offset;
           sectionElement.scrollIntoView({ behavior: 'smooth' });
+          console.log(targetScroll)
         }
       };
 
