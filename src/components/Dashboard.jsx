@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import { mainListItems, secondaryListItems } from './listItems';
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -19,8 +18,18 @@ import Backdrop from "@mui/material/Backdrop";
 import { DataGrid } from "@mui/x-data-grid";
 import Avatar from "@mui/material/Avatar"
 import DeleteConfirmationAlert from './DeleteConfirmationAlert';
-
-
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PeopleIcon from '@mui/icons-material/People';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import LayersIcon from '@mui/icons-material/Layers';
+import LogoutIcon from '@mui/icons-material/Logout';
+import WarningIcon from '@mui/icons-material/Warning';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
 
 
 const Drawer = styled(MuiDrawer)(
@@ -34,9 +43,73 @@ const Drawer = styled(MuiDrawer)(
     }),
 );
 
-
-
 export default function Dashboard() {
+
+
+
+    const mainListItems = (
+        <React.Fragment>
+            <ListItemButton>
+                <ListItemIcon>
+                    <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="Orders" />
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Customers" />
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <BarChartIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reports" />
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <LayersIcon />
+                </ListItemIcon>
+                <ListItemText primary="Integrations" />
+            </ListItemButton>
+        </React.Fragment>
+    );
+
+    const secondaryListItems = (
+        <React.Fragment>
+            <ListSubheader component="div" inset>
+                Views
+            </ListSubheader>
+
+            <ListItemButton>
+                <ListItemIcon>
+                    <WarningIcon />
+                </ListItemIcon>
+                <ListItemText primary="Low stock" />
+            </ListItemButton>
+
+            <ListItemButton>
+                <ListItemIcon>
+                    <LoyaltyIcon />
+                </ListItemIcon>
+                <ListItemText primary="On sale" />
+            </ListItemButton>
+
+            <ListItemButton >
+                <ListItemIcon>
+                    <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+            </ListItemButton>
+        </React.Fragment>
+    );
 
     const [displayedItem, setDisplayedItem] = React.useState("");
     const [open, setOpen] = React.useState(false);
@@ -45,18 +118,20 @@ export default function Dashboard() {
     const [deleteSuccess, setDeleteSuccess] = React.useState(null)
     const [products, setProducts] = React.useState([])
 
-    React.useEffect(()=>{
-      fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
-      .then((r)=>r.json() )
-      .then((data) => {
-        console.log(data);
-        // setTimeout(2000);
-        setProducts(data)
-      }
-    
-      )
+  
+
+    React.useEffect(() => {
+        fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
+            .then((r) => r.json())
+            .then((data) => {
+                console.log(data);
+                setProducts(data)
+            }
+
+            )
     }, [success, editSuccess, deleteSuccess])
 
+    
 
     const handleOpen = () => {
         setOpen(true);
@@ -69,7 +144,7 @@ export default function Dashboard() {
 
     const handleAddProduct = () => {
         handleOpen();
-        setDisplayedItem(<AddProduct setSuccess={setSuccess} handleClose={handleClose} setProducts={setProducts}/>)
+        setDisplayedItem(<AddProduct setSuccess={setSuccess} handleClose={handleClose} setProducts={setProducts} />)
     };
 
     const handleEdit = (product_id) => {
@@ -83,8 +158,6 @@ export default function Dashboard() {
         handleOpen();
         setDisplayedItem(<DeleteConfirmationAlert setDeleteSuccess={setDeleteSuccess} handleClose={handleClose} product_id={product_id} setProducts={setProducts} />)
     };
-
-
 
 
     const renderEditButton = (params) => {
@@ -161,24 +234,21 @@ export default function Dashboard() {
                 <Toolbar
                     sx={{
                         display: 'flex',
-                        flexDirection:'column',
+                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         // mt:'4.2vh',
                         fontSize: '12px',
-                        paddingBlock:'5vh'
+                        paddingBlock: '5vh'
 
                     }}
                 >
-                    
                     <Avatar sx={{ m: 1, bgcolor: '#242424' }}>
                         <PersonIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Welcome, Admin
                     </Typography>
-
-
                 </Toolbar>
 
                 <Divider />
@@ -192,7 +262,7 @@ export default function Dashboard() {
             </Drawer>
 
             <Grid item sx={{ width: '70%', marginInline: 'auto', marginTop: '12vh' }}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height:'78vh'}}>
+                <Paper sx={{ p: 2, display: "flex", flexDirection: "column", height: '78vh' }}>
 
                     {/* Container for Title, Conditional success messages and Add Product button */}
                     <Box
@@ -268,18 +338,25 @@ export default function Dashboard() {
                     </Box>
 
                     {/* Main content containing records */}
+
                     <div style={{ height: '91%' }}>
                         <DataGrid
-                                disableRowSelectionOnClick
+                            disableRowSelectionOnClick
 
-                                checkboxSelection
+                            checkboxSelection
 
                             rows={products}
                             columns={columns}
                             sx={{ overflowX: 'scroll', scrollBehavior: 'smooth' }}
-        
+
                         />
                     </div>
+
+
+
+
+
+
                     <Backdrop
                         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
                         open={open}
