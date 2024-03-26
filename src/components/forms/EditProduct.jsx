@@ -14,12 +14,17 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
   const [name, setName] = React.useState('Name')
   const [quantity, setQuantity] = React.useState(0)
   const [price, setPrice] = React.useState(0.00)
+  const [available, setAvailable] = React.useState(true)
+  const [on_sale, setOn_Sale] = React.useState(false)
 
   fetch(`https://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`)
   .then(r => r.json()).then( (d) =>{
     setName(d.name)
     setQuantity(d.quantity)
     setPrice(d.price)
+    setAvailable(d.available)
+    setOn_Sale(d.on_sale)
+
    })
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +33,8 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
       name: data.get('name') || name,
       quantity: data.get('quantity') || quantity,
       price: data.get('price') || price,
+      available: data.get('available') || available,
+      on_sale: data.get('on_sale') || on_sale
 
     }
 
@@ -149,6 +156,32 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
                   id="price"
                   autoComplete="price"
                   placeholder={price}
+
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="available"
+                  label="Available"
+                  type="available"
+                  id="available"
+                  autoComplete="available"
+                  placeholder={available}
+
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="on_sale"
+                  label="On sale"
+                  type="on_sale"
+                  id="on_sale"
+                  autoComplete="on_sale"
+                  placeholder={on_sale}
 
                 />
               </Grid>
