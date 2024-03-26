@@ -48,11 +48,11 @@ export default function Dashboard() {
     const handleClick = (e) =>{
         const section = e.target.innerText
         setMainItem(section)
-        // if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
-        // else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
-        // else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
-        // else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
-        // else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+        if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
+        else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
+        else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
+        else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
+        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
 
         if(section==="Low stock") {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
@@ -60,21 +60,21 @@ export default function Dashboard() {
             .then((data) => {
                const  filteredProducts = data.filter((data.quantity < 1000))
                setRows(filteredProducts)
-            }
+            })}
         else if(section==="On sale") {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
             .then((r) => r.json())
             .then((data) => {
-               const  filteredProducts = data.filter((data.on_sale === True))
+               const  filteredProducts = data.filter((data.on_sale === "True"))
                setRows(filteredProducts)
                 setColumns(productColumns)
-            }
+            })}
 
 
 
             
-            )
             
+        
         
         else if(section==="On sale") {
             // setRows(integrations); 
@@ -231,11 +231,13 @@ export default function Dashboard() {
             .then((data) => {
                 console.log(data);
                 setRows(data);
-                setColumns(producColumns);
             }
 
+
             )
-    }, [success, editSuccess, deleteSuccess])
+
+
+    }, [success, editSuccess, deleteSuccess ])
 
     
 
