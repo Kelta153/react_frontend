@@ -147,7 +147,7 @@ export default function Dashboard() {
             }
 
             )
-    }, [success, editSuccess, deleteSuccess])
+    }, [success, editSuccess, deleteSuccess,rows])
 
     
 
@@ -273,33 +273,89 @@ export default function Dashboard() {
 
  
     const customers = [
-
+        { id: 1, name: "Peter Andrews", location: "Nairobi" },
+        { id: 2, name: "Jane Doe", location: "New York" },
+        { id: 3, name: "Alice", location: "Tokyo" },
+        { id: 4, name: "Bob", location: "London" },
+        { id: 5, name: "Charlie", location: "Paris" },
+        { id: 6, name: "David", location: "Berlin" },
+        { id: 7, name: "Eva", location: "Madrid" },
+        { id: 8, name: "Frank", location: "Rome" },
+        { id: 9, name: "Grace", location: "Sydney" },
+        { id: 10, name: "Harry", location: "Toronto" },
     ]
 
     const customerColumns =[
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "name", headerName: "Name", width: 150 },
+        { field: "location", headerName: "Location", width: 150 },
+ 
+
 
     ]
 
     const reports = [
-
-    ]
+        { id: 1, dispatchDate: "2022-01-01", arrivalDate: "2022-01-02", delivered: true },
+        { id: 2, dispatchDate: "2022-01-02", arrivalDate: "2022-01-03", delivered: false },
+        { id: 3, dispatchDate: "2022-01-03", arrivalDate: "2022-01-04", delivered: true },
+        { id: 4, dispatchDate: "2022-01-04", arrivalDate: "2022-01-05", delivered: false },
+        { id: 5, dispatchDate: "2022-01-05", arrivalDate: "2022-01-06", delivered: true },
+        { id: 6, dispatchDate: "2022-01-06", arrivalDate: "2022-01-07", delivered: false },
+        { id: 7, dispatchDate: "2022-01-07", arrivalDate: "2022-01-08", delivered: true },
+        { id: 8, dispatchDate: "2022-01-08", arrivalDate: "2022-01-09", delivered: false },
+        { id: 9, dispatchDate: "2022-01-09", arrivalDate: "2022-01-10", delivered: true },
+        { id: 10, dispatchDate: "2022-01-10", arrivalDate: "2022-01-11", delivered: false },
+        { id: 11, dispatchDate: "2022-01-11", arrivalDate: "2022-01-12", delivered: true },
+        { id: 12, dispatchDate: "2022-01-12", arrivalDate: "2022-01-13", delivered: false },
+        { id: 13, dispatchDate: "2022-01-13", arrivalDate: "2022-01-14", delivered: true },
+        { id: 14, dispatchDate: "2022-01-14", arrivalDate: "2022-01-15", delivered: false },
+        { id: 15, dispatchDate: "2022-01-15", arrivalDate: "2022-01-16", delivered: true },
+        { id: 16, dispatchDate: "2022-01-16", arrivalDate: "2022-01-17", delivered: false },
+        { id: 17, dispatchDate: "2022-01-17", arrivalDate: "2022-01-18", delivered: true },
+        { id: 18, dispatchDate: "2022-01-18", arrivalDate: "2022-01-19", delivered: false },
+        { id: 19, dispatchDate: "2022-01-19", arrivalDate: "2022-01-20", delivered: true },
+        { id: 20, dispatchDate: "2022-01-20", arrivalDate: "2022-01-21", delivered: false },
+    ];
 
     const reportColumns =[
-
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "dispatchDate", headerName: "Dispatch date", width: 150 },
+        { field: "arrivalDate", headerName: "Arrival date", width: 150 },
+        { field: "delivered", headerName: "Status", width: 150 },
     ]
 
-    const integrations=[
-
-    ]
-
-    const integration =[
-
-    ]
-
-    const integrationColumns =[
-
-
-    ]
+ 
+    const integrationColumns = [
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "integrationName", headerName: "Integration Name", width: 150 },
+        { field: "integrationType", headerName: "Integration Type", width: 200 },
+        { field: "status", headerName: "Status", width: 150 },
+        { field: "integrationDate", headerName: "Integration Date", width: 200 },
+      ];
+      
+      const integrations = [
+        {
+          id: 1,
+          integrationName: "ERP Integration",
+          integrationType: "ERP",
+          status: "Connected",
+          integrationDate: "2023-01-05T14:30:00",
+        },
+        {
+          id: 2,
+          integrationName: "Marketing Automation Integration",
+          integrationType: "Marketing Automation",
+          status: "Disconnected",
+          integrationDate: null,
+        },
+        {
+          id: 3,
+          integrationName: "Shipping Integration",
+          integrationType: "Shipping",
+          status: "Connecting",
+          integrationDate: "2023-01-21T11:00:00",
+        },
+      ];
     return (
         <Box sx={{
             display: 'flex',
