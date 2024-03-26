@@ -226,7 +226,6 @@ export default function Dashboard() {
             .then((data) => {
                 console.log(data);
                 setProducts(data);
-                setRows(data)
             }
 
             )
