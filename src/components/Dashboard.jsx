@@ -48,7 +48,16 @@ export default function Dashboard() {
     const handleClick = (e) =>{
         const section = e.target.innerText
         setMainItem(section)
-        if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
+        if(section==="Dashboard") {
+            fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
+            .then((r) => r.json())
+            .then((data) => {
+                console.log(data);
+                setProducts(data)
+                setRows(products);
+            }
+            )
+            setColumns(productColumns)}
         else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
         else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
         else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
@@ -60,6 +69,7 @@ export default function Dashboard() {
             .then((data) => {
                const  filteredProducts = data.filter((data.quantity < 1000))
                setRows(filteredProducts)
+               
             })}
         else if(section==="On sale") {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
