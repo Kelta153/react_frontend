@@ -45,35 +45,47 @@ const Drawer = styled(MuiDrawer)(
 
 export default function Dashboard() {
 
+    const handleClick = (e) =>{
+        const section = e.target.innerText
+        setMainItem(section)
+        if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
+        else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
+        else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
+        else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
+        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+        
+        
+    }
+
 
 
     const mainListItems = (
         <React.Fragment>
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <DashboardIcon />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <ShoppingCartIcon />
                 </ListItemIcon>
                 <ListItemText primary="Orders" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <PeopleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Customers" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <BarChartIcon />
                 </ListItemIcon>
                 <ListItemText primary="Reports" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}> 
                 <ListItemIcon>
                     <LayersIcon />
                 </ListItemIcon>
@@ -88,14 +100,14 @@ export default function Dashboard() {
                 Views
             </ListSubheader>
 
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <WarningIcon />
                 </ListItemIcon>
                 <ListItemText primary="Low stock" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
                     <LoyaltyIcon />
                 </ListItemIcon>
@@ -116,7 +128,11 @@ export default function Dashboard() {
     const [success, setSuccess] = React.useState(false);
     const [editSuccess, setEditSuccess] = React.useState(null);
     const [deleteSuccess, setDeleteSuccess] = React.useState(null)
-    const [products, setProducts] = React.useState([])
+    const [rows, setRows] = React.useState([])
+    const [columns, setColumns] = React.useState([])
+    const [products, setProducts] = React.useState()
+    const [mainItem, setMainItem] = React.useState("ProductInventory")
+
 
   
 
@@ -125,7 +141,9 @@ export default function Dashboard() {
             .then((r) => r.json())
             .then((data) => {
                 console.log(data);
-                setProducts(data)
+                setProducts(data);
+                setRows(data)
+                setColumns(productColumns)
             }
 
             )
@@ -194,7 +212,7 @@ export default function Dashboard() {
         );
     };
 
-    const columns = [
+    const productColumns = [
         { field: "id", headerName: "ID", width: 70 },
         { field: "name", headerName: "Name", width: 150 },
         { field: "is_available", headerName: "Available", width: 150 },
@@ -219,6 +237,69 @@ export default function Dashboard() {
             disableClickEventBubbling: true,
         },
     ];
+
+    const orders = [
+        { id: 1, customerId: 1, product: "Headphones", quantity: 2, price: 50 },
+        { id: 2, customerId: 2, product: "Speakers", quantity: 1, price: 100 },
+        { id: 3, customerId: 3, product: "Camera", quantity: 1, price: 200 },
+        { id: 4, customerId: 4, product: "Printer", quantity: 2, price: 100 },
+        { id: 5, customerId: 5, product: "Mouse", quantity: 1, price: 50 },
+        { id: 6, customerId: 6, product: "Keyboard", quantity: 1, price: 100 },
+        { id: 7, customerId: 7, product: "Monitor", quantity: 1, price: 200 },
+        { id: 8, customerId: 8, product: "Scanner", quantity: 1, price: 150 },
+        { id: 9, customerId: 9, product: "Router", quantity: 1, price: 250 },
+        { id: 10, customerId: 10, product: "Headphones", quantity: 1, price: 50 },
+        { id: 11, customerId: 11, product: "Speakers", quantity: 1, price: 100 },
+        { id: 12, customerId: 12, product: "Camera", quantity: 1, price: 200 },
+        { id: 13, customerId: 13, product: "Printer", quantity: 1, price: 100 },
+        { id: 14, customerId: 14, product: "Mouse", quantity: 1, price: 50 },
+        { id: 15, customerId: 15, product: "Keyboard", quantity: 1, price: 100 },
+        { id: 16, customerId: 16, product: "Monitor", quantity: 1, price: 200 },
+        { id: 17, customerId: 17, product: "Scanner", quantity: 1, price: 150 },
+        { id: 18, customerId: 18, product: "Router", quantity: 1, price: 250 },
+        { id: 19, customerId: 19, product: "Headphones", quantity: 1, price: 50 },
+        { id: 20, customerId: 20, product: "Speakers", quantity: 1, price: 100 },
+    ]
+    
+    const orderColumns = [
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "customerId", headerName: "Customer_ID", width: 150 },
+        { field: "product", headerName: "Product", width: 150 },
+        { field: "quantity", headerName: "Quantity", width: 150 },
+        { field: "price", headerName: "Prics", width: 150 },
+      
+    ]
+
+
+ 
+    const customers = [
+
+    ]
+
+    const customerColumns =[
+
+    ]
+
+    const reports = [
+
+    ]
+
+    const reportColumns =[
+
+    ]
+
+    const integrations=[
+
+    ]
+
+    const integration =[
+
+    ]
+
+    const integrationColumns =[
+
+
+    ]
     return (
         <Box sx={{
             display: 'flex',
@@ -277,7 +358,7 @@ export default function Dashboard() {
                         {/* "Projects" Title */}
                         <Box sx={{ px: 2 }}>
                             <Typography component="h3" variant="h6" gutterBottom>
-                                Product inventory
+                                {mainItem}
                             </Typography>
                         </Box>
 
@@ -345,7 +426,7 @@ export default function Dashboard() {
 
                             checkboxSelection
 
-                            rows={products}
+                            rows={rows}
                             columns={columns}
                             sx={{ overflowX: 'scroll', scrollBehavior: 'smooth' }}
 

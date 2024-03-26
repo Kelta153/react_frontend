@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 
 
 export default function EditProduct({setEditSuccess, handleClose, product_id, setProducts}) {
-  const [name, setName] = React.useState('')
+  const [name, setName] = React.useState('Name')
   const [quantity, setQuantity] = React.useState(0)
   const [price, setPrice] = React.useState(0.00)
 
