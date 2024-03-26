@@ -212,11 +212,11 @@ export default function Dashboard() {
     const [success, setSuccess] = React.useState(false);
     const [editSuccess, setEditSuccess] = React.useState(null);
     const [deleteSuccess, setDeleteSuccess] = React.useState(null)
+    const [rows, setRows] = React.useState([])
     const [columns, setColumns] = React.useState(productColumns)
     const [products, setProducts] = React.useState()
-    const [mainItem, setMainItem] = React.useState("Product Inventory")
+    const [mainItem, setMainItem] = React.useState("ProductInventory")
 
-    const [rows, setRows] = React.useState(products)
 
   
 
@@ -226,12 +226,11 @@ export default function Dashboard() {
             .then((data) => {
                 console.log(data);
                 setProducts(data);
-                
-                
+                setRows(rows)
             }
 
             )
-    }, [success, editSuccess, deleteSuccess,mainItem ])
+    }, [success, editSuccess, deleteSuccess,mainItem, rows])
 
     
 
