@@ -58,7 +58,8 @@ export default function Dashboard() {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
             .then((r) => r.json())
             .then((data) => {
-                
+               const  filteredProducts = data.filter((data.quantity < 1000))
+               setRows(filteredProducts)
             }
 
 
