@@ -54,7 +54,7 @@ export default function Dashboard() {
             .then((data) => {
                 console.log(data);
                 setProducts(data)
-                setRows(products);
+                // setRows(data);
             }
             )
             setColumns(productColumns)}
@@ -241,13 +241,16 @@ export default function Dashboard() {
             .then((data) => {
                 console.log(data);
                 setRows(data);
+                // setProducts(data);
+                console.log(products) 
             }
 
 
             )
+            // console.log(products)
 
 
-    }, [success, editSuccess, deleteSuccess ])
+    }, [success, editSuccess, deleteSuccess, products ])
 
     
 
