@@ -248,7 +248,7 @@ export default function Dashboard() {
             // console.log(products)
 
 
-    }, [success, editSuccess, deleteSuccess, products, rows ])
+    }, [success, editSuccess, deleteSuccess, products ])
 
     
 
