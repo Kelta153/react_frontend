@@ -75,7 +75,7 @@ export default function Dashboard() {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
             .then((r) => r.json())
             .then((data) => {
-               const  filteredProducts = data.filter((data) => data.on_sale === "True")
+               const  filteredProducts = data.filter((data) => data.on_sale)
                setRows(filteredProducts)
                 setColumns(productColumns)
             })}
