@@ -230,7 +230,7 @@ export default function Dashboard() {
             }
 
             )
-    }, [success, editSuccess, deleteSuccess,mainItem, rows])
+    }, [success, editSuccess, deleteSuccess])
 
     
 
