@@ -48,29 +48,33 @@ export default function Dashboard() {
     const handleClick = (e) =>{
         const section = e.target.innerText
         setMainItem(section)
-        if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
-        else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
-        else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
-        else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
-        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+        // if(section==="Dashboard") {setRows(products); setColumns(productColumns)}
+        // else if(section==="Orders") {setRows(orders); setColumns(orderColumns)}
+        // else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
+        // else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
+        // else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
 
-        else if(section==="Low stock") {
+        if(section==="Low stock") {
             fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
             .then((r) => r.json())
             .then((data) => {
                const  filteredProducts = data.filter((data.quantity < 1000))
                setRows(filteredProducts)
             }
+        else if(section==="On sale") {
+            fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
+            .then((r) => r.json())
+            .then((data) => {
+               const  filteredProducts = data.filter((data.0n_sale === True))
+               setRows(filteredProducts)
+            }
 
 
-                // setProducts(data);
-                // setRows(data)
+
             
             )
             
-            // setRows(integrations); 
-            
-            setColumns(productColumns)}
+        
         else if(section==="On sale") {
             // setRows(integrations); 
             setColumns(productColumns)}
@@ -225,8 +229,8 @@ export default function Dashboard() {
             .then((r) => r.json())
             .then((data) => {
                 console.log(data);
-                setProducts(data);
-                setRows(data)
+                setRows(data);
+                setColumns(producColumns);
             }
 
             )
