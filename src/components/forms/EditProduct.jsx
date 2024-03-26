@@ -14,8 +14,8 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
   const [name, setName] = React.useState('Name')
   const [quantity, setQuantity] = React.useState(0)
   const [price, setPrice] = React.useState(0.00)
-  const [available, setAvailable] = React.useState("True")
-  const [on_sale, setOn_Sale] = React.useState("True")
+  const [available, setAvailable] = React.useState(true)
+  const [on_sale, setOn_Sale] = React.useState(true)
 
   fetch(`https://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`)
   .then(r => r.json()).then( (d) =>{
@@ -33,8 +33,8 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
       name: data.get('name') || name,
       quantity: data.get('quantity') || quantity,
       price: data.get('price') || price,
-      available: data.get('available') === "True",
-      on_sale: data.get('on_sale') === "True"
+      available: available,
+      on_sale: on_sale
 
     }
 
@@ -159,7 +159,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
 
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -183,7 +183,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
                   autoComplete="on_sale"
                   placeholder={`${on_sale}`}
                 />
-              </Grid>
+              </Grid> */}
 
               
             </Grid>
