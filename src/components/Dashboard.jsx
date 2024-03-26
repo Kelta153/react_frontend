@@ -53,6 +53,10 @@ export default function Dashboard() {
         else if(section==="Customers") {setRows(customers); setColumns(customerColumns)}
         else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
         else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+
+        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+
         
         
     }
@@ -123,60 +127,6 @@ export default function Dashboard() {
         </React.Fragment>
     );
 
-    const [displayedItem, setDisplayedItem] = React.useState("");
-    const [open, setOpen] = React.useState(false);
-    const [success, setSuccess] = React.useState(false);
-    const [editSuccess, setEditSuccess] = React.useState(null);
-    const [deleteSuccess, setDeleteSuccess] = React.useState(null)
-    const [rows, setRows] = React.useState([])
-    const [columns, setColumns] = React.useState([])
-    const [products, setProducts] = React.useState()
-    const [mainItem, setMainItem] = React.useState("ProductInventory")
-
-
-  
-
-    React.useEffect(() => {
-        fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
-            .then((r) => r.json())
-            .then((data) => {
-                console.log(data);
-                setProducts(data);
-                setRows(data)
-                setColumns(productColumns)
-            }
-
-            )
-    }, [success, editSuccess, deleteSuccess,rows])
-
-    
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-
-        setOpen(false);
-    };
-
-    const handleAddProduct = () => {
-        handleOpen();
-        setDisplayedItem(<AddProduct setSuccess={setSuccess} handleClose={handleClose} setProducts={setProducts} />)
-    };
-
-    const handleEdit = (product_id) => {
-        console.log(product_id);
-        handleOpen();
-        setDisplayedItem(<EditProduct setEditSuccess={setEditSuccess} product_id={product_id} handleClose={handleClose} setProducts={setProducts} />)
-    };
-
-    const handleDelete = (product_id) => {
-        console.log(product_id)
-        handleOpen();
-        setDisplayedItem(<DeleteConfirmationAlert setDeleteSuccess={setDeleteSuccess} handleClose={handleClose} product_id={product_id} setProducts={setProducts} />)
-    };
-
 
     const renderEditButton = (params) => {
         return (
@@ -237,6 +187,62 @@ export default function Dashboard() {
             disableClickEventBubbling: true,
         },
     ];
+
+
+    const [displayedItem, setDisplayedItem] = React.useState("");
+    const [open, setOpen] = React.useState(false);
+    const [success, setSuccess] = React.useState(false);
+    const [editSuccess, setEditSuccess] = React.useState(null);
+    const [deleteSuccess, setDeleteSuccess] = React.useState(null)
+    const [rows, setRows] = React.useState([])
+    const [columns, setColumns] = React.useState(productColumns)
+    const [products, setProducts] = React.useState()
+    const [mainItem, setMainItem] = React.useState("ProductInventory")
+
+
+  
+
+    React.useEffect(() => {
+        fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
+            .then((r) => r.json())
+            .then((data) => {
+                console.log(data);
+                setProducts(data);
+                setRows(data)
+            }
+
+            )
+    }, [success, editSuccess, deleteSuccess,rows, columns ])
+
+    
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+
+        setOpen(false);
+    };
+
+    const handleAddProduct = () => {
+        handleOpen();
+        setDisplayedItem(<AddProduct setSuccess={setSuccess} handleClose={handleClose} setProducts={setProducts} />)
+    };
+
+    const handleEdit = (product_id) => {
+        console.log(product_id);
+        handleOpen();
+        setDisplayedItem(<EditProduct setEditSuccess={setEditSuccess} product_id={product_id} handleClose={handleClose} setProducts={setProducts} />)
+    };
+
+    const handleDelete = (product_id) => {
+        console.log(product_id)
+        handleOpen();
+        setDisplayedItem(<DeleteConfirmationAlert setDeleteSuccess={setDeleteSuccess} handleClose={handleClose} product_id={product_id} setProducts={setProducts} />)
+    };
+
+
 
     const orders = [
         { id: 1, customerId: 1, product: "Headphones", quantity: 2, price: 50 },
