@@ -61,7 +61,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
         console.error('Error:', error);
       });
     // console.log(formData)
-    fetch('http://inventory-management-system-gary.azurewebsites.net/product/')
+    fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
     .then((r)=>r.json() )
     .then((data) => {
 
