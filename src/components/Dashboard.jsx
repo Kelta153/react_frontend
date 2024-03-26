@@ -67,6 +67,7 @@ export default function Dashboard() {
             .then((data) => {
                const  filteredProducts = data.filter((data.0n_sale === True))
                setRows(filteredProducts)
+                setColumns(productColumns)
             }
 
 
