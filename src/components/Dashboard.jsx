@@ -39,8 +39,8 @@ const Drawer = styled(MuiDrawer)(
             whiteSpace: 'nowrap',
             width: '240px',
             boxSizing: 'border-box',
-        },
-    }),
+        }
+    })
 );
 
 export default function Dashboard() {
