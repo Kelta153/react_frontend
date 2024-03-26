@@ -15,7 +15,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
   const [quantity, setQuantity] = React.useState(0)
   const [price, setPrice] = React.useState(0.00)
 
-  fetch(`http://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`)
+  fetch(`https://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`)
   .then(r => r.json()).then( (d) =>{
     setName(d.name)
     setQuantity(d.quantity)
@@ -31,7 +31,7 @@ export default function EditProduct({setEditSuccess, handleClose, product_id, se
 
     }
 
-    fetch(`http://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`, {
+    fetch(`https://inventory-management-system-gary.azurewebsites.net/product/${product_id}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
