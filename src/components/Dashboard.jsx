@@ -86,10 +86,7 @@ export default function Dashboard() {
             
             
         
-        
-        else if(section==="On sale") {
-            // setRows(integrations); 
-            setColumns(productColumns)}
+    
 
         
 
@@ -251,7 +248,7 @@ export default function Dashboard() {
             // console.log(products)
 
 
-    }, [success, editSuccess, deleteSuccess, products ])
+    }, [success, editSuccess, deleteSuccess, products, rows ])
 
     
 
