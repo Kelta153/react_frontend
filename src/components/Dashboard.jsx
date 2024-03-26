@@ -54,11 +54,28 @@ export default function Dashboard() {
         else if(section==="Reports") {setRows(reports); setColumns(reportColumns)}
         else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
 
-        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
-        else if(section==="Integrations") {setRows(integrations); setColumns(integrationColumns)}
+        else if(section==="Low stock") {
+            fetch('https://inventory-management-system-gary.azurewebsites.net/product/')
+            .then((r) => r.json())
+            .then((data) => {
+                
+            }
+
+
+                // setProducts(data);
+                // setRows(data)
+            
+            )
+            
+            // setRows(integrations); 
+            
+            setColumns(productColumns)}
+        else if(section==="On sale") {
+            // setRows(integrations); 
+            setColumns(productColumns)}
 
         
-        
+
     }
 
 
@@ -212,7 +229,7 @@ export default function Dashboard() {
             }
 
             )
-    }, [success, editSuccess, deleteSuccess,rows, columns ])
+    }, [success, editSuccess, deleteSuccess,mainItem ])
 
     
 
